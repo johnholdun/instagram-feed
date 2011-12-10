@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My Instagram Feed</title>
-    <link rel="stylesheet" href="<?= $root ?>/style.css">    
+    <link rel="stylesheet" href="<?= $root ?>/style.css">
   </head>
   <body>
     <h1><a href="<?= $root ?>">My Instagram Feed</a></h1>
@@ -26,7 +26,7 @@
               <?= date('F j', $image['created_time']) ?> <? if (date('Y') != date('Y', $image['created_time'])) echo date('Y', $image['created_time']) ?>
             </a>
             <? if ($image['location']['name']): ?>
-              at <?= $image['location']['name'] ?>
+              at <a href="http://maps.google.com/?q=<?= urlencode($image['location']['name']) ?>&sll=<?= implode(',', array($image['location']['latitude'], $image['location']['longitude'])) ?>"><?= $image['location']['name'] ?></a>
             <? endif; ?>
           </small>
         </li>
@@ -36,7 +36,7 @@
     <? if (!$permalink && $page != $pages): ?>
       <nav><a href="<?= page_path($page + 1) ?>">Older</a></nav>
     <? endif; ?>
-    
+
     <footer><p>Powered by <a href="http://github.com/johnholdun/instagram-feed">John Holdun&rsquo;s Instagram Feed Thing</a></p></footer>
   </body>
 </html>
