@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^/?$ index.html
+RewriteRule ^update/?$ index.php?action=update
+RewriteRule ^page/([0-9]+)/?$ index.php?page=$1
+RewriteRule ^([0-9]+)/?$ index.php?id=$1

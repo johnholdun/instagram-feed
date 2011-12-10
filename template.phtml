@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Instagram Feed</title>
+    <link rel="stylesheet" href="<?= $root ?>/style.css">    
+  </head>
+  <body>
+    <h1><a href="<?= $root ?>">My Instagram Feed</a></h1>
+
+    <? if (!$permalink && $page != 1): ?>
+      <nav><a href="<?= page_path($page - 1) ?>">Newer</a></nav>
+    <? endif; ?>
+
+    <ul>
+      <? foreach ($page_images as $image): ?>
+        <li id="image-<?= $image['local_id'] ?>">
+          <a href="<?= $image['link'] ?>">
+            <img src="<?= $image['images']['standard_resolution']['url'] ?>" width="<?= $image['images']['standard_resolution']['width'] ?>" height="<?= $image['images']['standard_resolution']['height'] ?>">
+          </a>
+          <? if ($image['caption']): ?>
+            <span class="caption"><?= $image['caption'] ?></span>
+          <? endif; ?>
+          <small>
+            <a class="meta" href="<?= $root ?>/<?= $image['local_id'] ?>">
+              <?= date('F j', $image['created_time']) ?> <? if (date('Y') != date('Y', $image['created_time'])) echo date('Y', $image['created_time']) ?>
+            </a>
+            <? if ($image['location']['name']): ?>
+              at <?= $image['location']['name'] ?>
+            <? endif; ?>
+          </small>
+        </li>
+      <? endforeach; ?>
+    </ul>
+
+    <? if (!$permalink && $page != $pages): ?>
+      <nav><a href="<?= page_path($page + 1) ?>">Older</a></nav>
+    <? endif; ?>
+    
+    <footer><p>Powered by <a href="http://github.com/johnholdun/instagram-feed">John Holdun&rsquo;s Instagram Feed Thing</a></p></footer>
+  </body>
+</html>

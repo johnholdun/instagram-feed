@@ -1,0 +1,14 @@
+html, body, ul, li, h1, h2, h3, p { margin: 0; padding: 0; list-style: none; font-size: 16px; line-height: 24px; }
+
+body { margin: 50px 0; }
+
+h1 a, small a { color: inherit; text-decoration: none; }
+
+body > h1, ul, nav a { display: block; width: 600px; margin: 0 auto 40px; }
+body > h1 { font: 40px/50px inherit; }
+
+li, nav a, footer p { margin-bottom: 40px; text-align: center; font: 18px/30px inherit; }
+li > * { display: block; }
+img { width: 600px; height: 600px; margin: -1px -1px 9px; border: 0; background: #EEE; }
+small { color: #444; font: 14px/20px inherit; }
+small a { color: inherit; }
