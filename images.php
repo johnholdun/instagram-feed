@@ -67,7 +67,9 @@ function images_fetch($min_id = null) {
   $images = images_clean($images);
   if ($min_id !== null)
     array_pop($images);
-  
+
+  $images = array_reverse($images);
+
   return $images;
 }
 
